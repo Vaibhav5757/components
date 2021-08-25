@@ -1,0 +1,22 @@
+<form [formGroup]="signUpForm">
+    <h1>Create Account</h1>
+    <span>or use your email for registration</span>
+    <input formControlName="name" type="text" placeholder="Name" />
+    <p class="error" *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
+        Please provide with a appropriate name
+    </p>
+    <input formControlName="email" type="email" placeholder="Email" />
+    <p class="error" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+        Email does not look right
+    </p>
+    <input formControlName="password" type="password" placeholder="Password" />
+    <p class="error password" *ngIf="
+      signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid
+    ">
+        Password must contain at least 8 characters, at least one number and both lower and uppercase letters and special characters
+    </p>
+    <button [disabled]="signUpForm.invalid">Sign Up</button>
+    <button (click)="randomizeFields()" class="randomize-button" tooltip="Randomize fields" placement="top">
+    R
+  </button>
+</form>
